@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  traccar-middleware:
+    image: traccar-middleware:v0.1 # you have to build the image manually first
+    network_mode: host
+    container_name: traccar-middleware
+    ports:
+      - "7777:7777"
+    volumes:
+      - ./logs:/app/logs
+    env_file:
+      - .env
+    restart: unless-stopped
